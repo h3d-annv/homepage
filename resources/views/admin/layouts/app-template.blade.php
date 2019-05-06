@@ -41,6 +41,8 @@
     <script src="{{ asset ("admin/js/app.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset ("admin/js/demo.js") }}" type="text/javascript"></script>
     <script  src="{{ asset ("admin/js/tinymce.min.js") }}" type="text/javascript" ></script>
+
+    <script src="{{ asset ("admin/js/index.js") }}" type="text/javascript"></script>
     <![endif]-->
   </head>
   <!--
@@ -73,15 +75,6 @@
     <!-- /.content-wrapper -->
     <!-- Footer -->
     @include('admin.layouts.footer')
-    <!-- ./wrapper -->
-    <!-- REQUIRED JS SCRIPTS -->
-    <!-- jQuery 2.1.3 -->
-
-    <script src="{{ asset ("admin/js/index.js") }}" type="text/javascript"></script>
-    <!-- Optionally, you can add Slimscroll and FastClick plugins.
-      Both of these plugins are recommended to enhance the
-      user experience. Slimscroll is required when using the
-      fixed layout. -->
     </div>
   </body>
 </html>
