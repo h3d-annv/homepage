@@ -49,18 +49,18 @@
               <a href="{{ url('admin/introduce/su-menh') }}">Destiny</a>
           </ul>
         </li>
-        <li class="treeview {{(Request::segment(2) == 'trademark' || Request::segment(2) == 'category' || Request::segment(2) == 'product' || Request::segment(2) == 'type' || Request::segment(2) == 'kind' || Request::segment(2) == 'origin')? 'active' : '' }}">
+        <li class="treeview {{(Request::segment(2) == 'product-category' || Request::segment(2) == 'product')? 'active' : '' }}">
           <a href="#"><i class="fa fa-link"></i> <span>Product</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{(Request::segment(2) == 'type')? 'active' : '' }}">
+            <li class="{{(Request::segment(2) == 'product-category')? 'active' : '' }}">
               <a href="{{ url('admin/product-category') }}">Category</a>
             </li>
-            <li class="{{(Request::segment(2) == 'kind')? 'active' : '' }}">
-              <a href="{{ url('admin/kind') }}">Product</a>
+            <li class="{{(Request::segment(2) == 'product')? 'active' : '' }}">
+              <a href="{{ url('admin/product') }}">Product</a>
             </li>
           </ul>
         </li>

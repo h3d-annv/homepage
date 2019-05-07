@@ -1,4 +1,4 @@
-var Product = {
+var ProductCategory = {
     init: function () {
         // Remove item
         $('.btnRemove').click(function(){
@@ -7,7 +7,7 @@ var Product = {
             var _token = $(this).data('token');
 
             if(confirm('Do you really want to delete this item?')){
-                Product.remove(id, url, _token)
+                ProductCategory.remove(id, url, _token)
             }
         });
 
@@ -20,7 +20,7 @@ var Product = {
             var changeToStatusText = (status == 1) ? 'deactive' : 'active';
 
             if(confirm('Do you really want to ' + changeToStatusText + ' this item?')){
-                Product.updateStatus(id, url, _token, status)
+                ProductCategory.updateStatus(id, url, _token, status)
             }
         });
     },

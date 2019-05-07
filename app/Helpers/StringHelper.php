@@ -14,7 +14,7 @@ class StringHelper
             return $slug;
         }
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 999; $i++) {
             $newSlug = $slug.'-'.$i;
             if (! $allSlugs->contains('slug', $newSlug)) {
                 return $newSlug;

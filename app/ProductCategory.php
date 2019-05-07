@@ -11,7 +11,6 @@ class ProductCategory extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'title_vi', 'title_en', 'slug', 'image', 'description_vi', 'description_en'
+        'title_vi', 'title_en', 'slug', 'image', 'description_vi', 'description_en', 'is_active'
     ];
-
 }

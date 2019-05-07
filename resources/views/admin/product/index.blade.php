@@ -1,4 +1,4 @@
-@extends('admin.product-category.base')
+@extends('admin.product.base')
 @section('action-content')
     <!-- Main content -->
     <section class="content">

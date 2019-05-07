@@ -44,6 +44,11 @@ $(document).ready(function(){
     };
 
     tinymce.init(editor_config);
+
+
+
+    ProductCategory.init();
+    Product.init();
 });
 
 // Build slug string
