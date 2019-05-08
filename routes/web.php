@@ -31,6 +31,7 @@ Route::prefix('admin')->group(function(){
         Route::put('/product-category/modify', 'ProductCategoryController@modify')->name('admin.product-category.modify');
         Route::put('/product-category/activate', 'ProductCategoryController@activate')->name('admin.product-category.activate');
         Route::delete('/product-category', 'ProductCategoryController@remove')->name('admin.product-category.remove');
+        Route::put('/product-category/sort', 'ProductCategoryController@sort')->name('admin.product-category.sort');
 
         Route::get('/product', 'ProductController@index')->name('admin.product.index');
         Route::get('/product/create', 'ProductController@create')->name('admin.product.create');

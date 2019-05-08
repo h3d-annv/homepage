@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Helpers\BatchHelper;
 
 class Controller extends BaseController
 {
@@ -46,5 +47,28 @@ class Controller extends BaseController
             }
         }
         return false;
+    }
+
+    protected function commonSort($activeModel, $data, $table){
+        $model = $activeModel->fetchByID($data['id']);
+        $currentOrder = $model['sort'];
+        $newOrder = $data['sortNo'];
+        $impactedModel = $activeModel->fetchByOrder($newOrder);
+        $impactedId = 0;
+        foreach ($impactedModel as $item) {
+            $impactedId = isset($item['id']) ? $item['id'] : 0;
+        }
+        if($impactedId == 0){
+            $updateData = [
+                ['id' => (int) $data['id'], 'sort' => (int) $newOrder]
+            ];
+        }else{
+            $updateData = [
+                ['id' => (int) $data['id'], 'sort' => (int) $newOrder],
+                ['id' => (int) $impactedId, 'sort' => (int) $currentOrder],
+            ];
+        }
+
+        return $activeModel->sort($updateData, $table);
     }
 }
