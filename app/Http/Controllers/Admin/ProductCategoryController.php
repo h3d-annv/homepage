@@ -28,7 +28,7 @@ class ProductCategoryController extends Controller
             'category_id' => Input::get('category_id')
         ];
 
-        $result = $this->productCategoryRepository->fetchAllWithPaginator(10, $searchCriteria);
+        $result = $this->productCategoryRepository->fetchAllWithPaginator(10, $searchCriteria, true);
 
         $result->setPath('product-category?title=' . $searchCriteria['title'] . '&category_id=' . $searchCriteria['category_id']);
         return view('admin/product-category/index', [
@@ -158,6 +158,16 @@ class ProductCategoryController extends Controller
     public function activate(Request $request){
         $result = $this->commonActivate($this->productCategoryRepository, $request->all());
         if($result){
+            return response('Done', 200);
+        }
+        return response('Failed', 200);
+    }
+
+    public function sort(Request $request){
+        $request = $request->all();
+
+        $result = $this->commonSort($this->productCategoryRepository, $request, 'product_category');
+        if($result > 0){
             return response('Done', 200);
         }
         return response('Failed', 200);

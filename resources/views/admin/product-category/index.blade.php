@@ -51,6 +51,7 @@
                                     <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">English name</th>
                                     <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Slug</th>
                                     <th width="10%" class="text-center hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Status</th>
+                                    <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Sort</th>
                                     <th class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Actions</th>
                                 </tr>
                                 </thead>
@@ -70,6 +71,10 @@
                                                class="btnActivate">
                                                 <span class="glyphicon {{ ($item->is_active != 0) ? 'glyphicon-ok text-green' : 'glyphicon-remove text-red' }}"></span>
                                             </a>
+                                        </td>
+                                        <td>
+                                            <input id="sort" type="number" class="form-control inputSort" name="sort" value="{{ $item->sort }}"
+                                                   data-token="{{ csrf_token() }}" data-id="{{ $item->id }}" data-url="{{ route('admin.product-category.sort') }}" autofocus>
                                         </td>
                                         <td class="">
                                             <a href="{{ route('admin.product-category.update', ['id' => $item->id]) }}" class="btn btn-success col-sm-3 col-xs-5 btn-margin">

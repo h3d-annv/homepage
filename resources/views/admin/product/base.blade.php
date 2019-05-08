@@ -15,4 +15,3 @@
     <!-- /.content -->
     </div>
 @endsection
-<script src="{{ asset ("admin/js/product.js") }}" type="text/javascript"></script>

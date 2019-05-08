@@ -10,19 +10,26 @@ class CommonRepository
 {
     public $model;
 
+    const SORT_ASCENDING = 'asc';
+    const SORT_DESCENDING = 'desc';
+
     function __construct(Model $model){
         $this->model = $model;
     }
 
-    public function fetchAllWithPaginator(int $limit = 10, $criteria = []){
-        return $this->model->where('is_deleted' , 0)->whereExists(function($query) use ($criteria){
-
+    public function fetchAllWithPaginator($limit = 10, $criteria = [], $sortable){
+        $query = $this->model->whereExists(function($query) use ($criteria){
+            $query->select('*')->where('is_deleted' , 0);
             if(!empty($criteria['title'])){
                 $query->where('title_vi', 'like', '%' . $criteria['title'] . '%');
                 $query->orWhere('title_en', 'like', '%' . $criteria['title'] . '%');
             };
 
-        })->paginate($limit);
+        });
+        if($sortable){
+            $query->orderBy('sort', self::SORT_ASCENDING);
+        }
+        return $query->paginate($limit);
     }
 
     /**
@@ -43,11 +50,36 @@ class CommonRepository
         return $this->model::where(['id' => $id])->update($data);
     }
 
+    public function sort($data, $table){
+        $cases = [];
+        $ids = [];
+        $params = [];
+        foreach ($data as  $row) {
+            $id = (int) $row['id'];
+            $cases[] = "WHEN {$id} then ?";
+            $params[] = $row['sort'];
+            $ids[] = $id;
+        }
+        $ids = implode(',', $ids);
+        $cases = implode(' ', $cases);
+
+        return \DB::update("UPDATE `" . $table . "` SET `sort` = CASE `id` {$cases} END
+            WHERE `id` in ({$ids})", $params);
+    }
+
     /**
      * @param integer $id
      * @return mixed
      */
     public function fetchByID($id){
         return $this->model::where('is_deleted', '=', 0)->findOrFail($id);
+    }
+
+    /**
+     * @param $order
+     * @return mixed
+     */
+    public function fetchByOrder($order){
+        return $this->model::where(['is_deleted' => 0, 'sort' => $order])->get();
     }
 }

@@ -77,4 +77,6 @@
     @include('admin.layouts.footer')
     </div>
   </body>
+  <script src="{{ asset ("admin/js/product-category.js") }}" type="text/javascript"></script>
+  <script src="{{ asset ("admin/js/product.js") }}" type="text/javascript"></script>
 </html>
