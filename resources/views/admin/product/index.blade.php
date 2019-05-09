@@ -18,7 +18,7 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            <form action="{{ route('admin.product-category.index') }}" method="get">
+                            <form action="{{ route('admin.product.index') }}" method="get">
                                 @csrf
                                 <div class="col-md-4">
                                     <div class="input-group">
@@ -40,7 +40,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="col-sm-12">
-                            <a href="{{ route('admin.product-category.create') }}" class="btn btn-success" role="button">Add new</a>
+                            <a href="{{ route('admin.product.create') }}" class="btn btn-success" role="button">Add new</a>
                         </div>
                         <div class="col-sm-12">
                             <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
@@ -49,8 +49,9 @@
                                     <th width="10%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Image</th>
                                     <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Vietnamese name</th>
                                     <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">English name</th>
-                                    <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Slug</th>
+                                    <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Category</th>
                                     <th width="10%" class="text-center hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Status</th>
+                                    <th width="10%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Sort</th>
                                     <th class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Actions</th>
                                 </tr>
                                 </thead>
@@ -58,24 +59,32 @@
                                 @foreach ($result as $key => $item)
                                     <tr role="row" class="odd">
                                         <td>{{ HTML::image(asset("uploads/" . $item->image),'', array('width' => 200)) }}</td>
-                                        <td>{{ $item->title_vi }}</td>
-                                        <td>{{ $item->title_en }}</td>
-                                        <td>{{ $item->slug }}</td>
-                                        <td>
+                                        <td align="center">{{ $item->title_vi }}</td>
+                                        <td align="center">{{ $item->title_en }}</td>
+                                        @foreach($categories as $category)
+                                            @if($category->id == $item->category_id)
+                                            <td align="center">{{ $category->title_en }}</td>
+                                            @endif
+                                        @endforeach
+                                        <td align="center">
                                             <a href="javascript:void(0);"
                                                data-token="{{ csrf_token() }}"
                                                data-id="{{ $item->id }}"
                                                data-status="{{ $item->is_active }}"
-                                               data-url="{{ route('admin.product-category.activate') }}"
+                                               data-url="{{ route('admin.product.activate') }}"
                                                class="btnActivate">
                                                 <span class="glyphicon {{ ($item->is_active != 0) ? 'glyphicon-ok text-green' : 'glyphicon-remove text-red' }}"></span>
                                             </a>
                                         </td>
-                                        <td class="">
-                                            <a href="{{ route('admin.product-category.update', ['id' => $item->id]) }}" class="btn btn-success col-sm-3 col-xs-5 btn-margin">
+                                        <td>
+                                            <input id="sort" type="number" class="form-control inputSort" name="sort" value="{{ $item->sort }}"
+                                                   data-token="{{ csrf_token() }}" data-id="{{ $item->id }}" data-url="{{ route('admin.product-category.sort') }}" autofocus>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{{ route('admin.product.update', ['id' => $item->id]) }}" class="btn btn-success col-sm-6 col-xs-5" style="margin-right: 10%;padding: 5px;font-size: 14px;width:45%;">
                                                 Update
                                             </a>
-                                            <a data-token="{{ csrf_token() }}" data-id="{{ $item->id }}" data-url="{{ route('admin.product-category.remove') }}" class="btnRemove btn btn-danger col-sm-3 col-xs-5 btn-margin">
+                                            <a data-token="{{ csrf_token() }}" data-id="{{ $item->id }}" data-url="{{ route('admin.product.remove') }}" class="btnRemove btn btn-danger col-sm-6 col-xs-5" style="padding: 5px;font-size: 14px;width:45%">
                                                 Delete
                                             </a>
                                         </td>
