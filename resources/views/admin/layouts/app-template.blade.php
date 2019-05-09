@@ -43,6 +43,11 @@
     <script  src="{{ asset ("admin/js/tinymce.min.js") }}" type="text/javascript" ></script>
 
     <script src="{{ asset ("admin/js/index.js") }}" type="text/javascript"></script>
+    <script>
+      window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
     <![endif]-->
   </head>
   <!--

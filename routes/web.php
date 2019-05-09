@@ -19,9 +19,12 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+    Route::group(['middleware' => ['auth:web'], 'namespace' => 'Auth'], function() {
+        Route::post('/logout', 'AdminLoginController@logout')->name('admin.logout');
+    });
 
     Route::group(['middleware' => ['auth:web'], 'namespace' => 'Admin'], function() {
+        Route::get('/', 'DashboardController@index')->name('admin.dashboard');
         Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
 
         Route::get('/product-category', 'ProductCategoryController@index')->name('admin.product-category.index');
@@ -53,5 +56,9 @@ Route::prefix('admin')->group(function(){
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/login', function(){
+   return redirect('/');
+});
 
 

@@ -4,9 +4,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>E</b>M</span>
+      <span class="logo-mini"><b>H</b>3D</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">{{ config('app.name', 'EmployeeManagement') }}</span>
+      <span class="logo-lg">H3D Homepage</span>
     </a>
 
     <!-- Header Navbar -->
@@ -40,7 +40,7 @@
               <li class="user-footer">
                @if (Auth::guest())
                   <div class="pull-left">
-                    <a href="{{ route('login') }}" class="btn btn-default btn-flat">Login</a>
+                    <a href="{{ route('admin.login') }}" class="btn btn-default btn-flat">Login</a>
                   </div>
                @else
                  <div class="pull-left">
@@ -59,6 +59,6 @@
       </div>
     </nav>
   </header>
-   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+   <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
       {{ csrf_field() }}
    </form>
