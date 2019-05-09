@@ -12,6 +12,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    const SORT_ASCENDING = 'asc';
+    const SORT_DESCENDING = 'desc';
+
     /**
      * Soft delete single record
      * Set is_deleted = 1
