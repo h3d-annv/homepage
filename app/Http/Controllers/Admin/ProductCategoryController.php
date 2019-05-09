@@ -28,7 +28,7 @@ class ProductCategoryController extends Controller
             'category_id' => Input::get('category_id')
         ];
 
-        $result = $this->productCategoryRepository->fetchAllWithPaginator(10, $searchCriteria, true);
+        $result = $this->productCategoryRepository->fetchAllWithPaginator(10, $searchCriteria, self::SORT_ASCENDING);
 
         $result->setPath('product-category?title=' . $searchCriteria['title'] . '&category_id=' . $searchCriteria['category_id']);
         return view('admin/product-category/index', [

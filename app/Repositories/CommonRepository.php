@@ -10,14 +10,11 @@ class CommonRepository
 {
     public $model;
 
-    const SORT_ASCENDING = 'asc';
-    const SORT_DESCENDING = 'desc';
-
     function __construct(Model $model){
         $this->model = $model;
     }
 
-    public function fetchAllWithPaginator($limit = 10, $criteria = [], $sortable){
+    public function fetchAllWithPaginator($limit = 10, $criteria = [], $sortType){
         $query = $this->model->whereExists(function($query) use ($criteria){
             $query->select('*')->where('is_deleted' , 0);
             if(!empty($criteria['title'])){
@@ -26,8 +23,8 @@ class CommonRepository
             };
 
         });
-        if($sortable){
-            $query->orderBy('sort', self::SORT_ASCENDING);
+        if($sortType){
+            $query->orderBy('sort', $sortType);
         }
         return $query->paginate($limit);
     }
