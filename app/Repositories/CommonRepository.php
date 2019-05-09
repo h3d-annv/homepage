@@ -14,6 +14,12 @@ class CommonRepository
         $this->model = $model;
     }
 
+    /**
+     * @param int $limit
+     * @param array $criteria
+     * @param bool $sortType
+     * @return mixed
+     */
     public function fetchAllWithPaginator($limit = 10, $criteria = [], $sortType = false){
         $query = $this->model->whereExists(function($query) use ($criteria){
             $query->select('*')->where('is_deleted' , 0);
@@ -47,6 +53,12 @@ class CommonRepository
         return $this->model::where(['id' => $id])->update($data);
     }
 
+    /**
+     * Change sort order for target row and affected row
+     * @param $data
+     * @param $table
+     * @return mixed
+     */
     public function sort($data, $table){
         $cases = [];
         $ids = [];

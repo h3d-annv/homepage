@@ -52,6 +52,14 @@ class Controller extends BaseController
         return false;
     }
 
+    /**
+     * int $currentOrder is order of target row before change
+     * int $newOrder is new order, user change at UI
+     * @param $activeModel
+     * @param $data
+     * @param $table
+     * @return mixed
+     */
     protected function commonSort($activeModel, $data, $table){
         $model = $activeModel->fetchByID($data['id']);
         $currentOrder = $model['sort'];
