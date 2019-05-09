@@ -14,7 +14,7 @@ class CommonRepository
         $this->model = $model;
     }
 
-    public function fetchAllWithPaginator($limit = 10, $criteria = [], $sortType){
+    public function fetchAllWithPaginator($limit = 10, $criteria = [], $sortType = false){
         $query = $this->model->whereExists(function($query) use ($criteria){
             $query->select('*')->where('is_deleted' , 0);
             if(!empty($criteria['title'])){
