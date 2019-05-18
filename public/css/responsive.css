@@ -1,0 +1,571 @@
+
+/*min phải viết từ nhỏ đến lớn*/
+
+@media all and (min-width: 1640px){
+    .ul_mainmenu li a{
+        margin-right: 25px;
+    }
+    .ul_mainmenu li:after {
+        right: 5px;
+        width: 2px;
+    }
+    .appdownload_hd a{
+        font-size: 18px;
+    }
+}
+
+@media all and (max-width: 1370px){
+    .appdownload_list ul li{
+        font-size: 14px;
+    }
+    .appdownload_title h1{
+        font-size: 24px;
+        color: #444444;
+    }
+    .ul_mainmenu li a{
+        margin-right: 10px;
+    }
+    .footer_link_list li a{
+        font-size: 12px;
+    }
+    .footer_one_listinfo li{
+        font-size: 12px;
+    }
+    .footer_one_listinfo{
+        margin-top: 20px;
+    }
+    .footer_bot p{
+        font-size: 12px;
+    }
+    .footer_link_tit h1{
+        font-size: 14px;
+    }
+    .footer_one_listsocial li a i{
+        font-size: 16px;
+    }
+    .footer_one_listsocial li{
+        width: 50px;
+        height: 50px;
+    }
+    .sectwo_sv_subimg{
+        display: webkit-flex;
+        display: moz-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        transition: all 1s;
+        background: #fff;
+    }
+    .secone_part2_sub img{
+        height: 120px;
+    }
+    .secone_part2_sub_2 img{
+        height: 150px;
+    }
+    .secone_part2_sub_2_in p {
+        font-size: 24px;
+        overflow: visible;
+        height: 71px;
+    }
+    .secone_part2_sub_in p {
+        color: #fff;
+        font-size: 20px;
+        overflow: visible;
+        height: 60px;
+    }
+    .contact_bot_sub{
+        min-height: 150px;
+    }
+    .contact_bot_sub_text a{
+        font-size: 20px;
+    }
+    .contact_bot_sub_text p{
+        font-size: 20px;
+    }
+    .sectwo_designtools_text h1{
+        font-size: 30px;
+    }
+    .header_topright_list li a {
+        font-size: 12px;
+    }
+
+
+    #cssmenu > ul > li > a{
+        font-size: 14px ;
+    }
+    .header_intro_text h1{
+        font-size: 45px;
+    }
+    .btn-ra{
+        font-size: 10px;
+        padding: 12px 24px;
+    }
+    .btn_hover{
+        font-size: 10px;
+    }
+    .secone_title h1{
+        font-size: 26px;
+    }
+    .secone_info_tit p{
+        font-size: 24px;
+    }
+    .secone_info_des p{
+        font-size: 14px;
+    }
+    .sectwo_tit h1{
+        font-size: 24px;
+    }
+    .sectwo_des p{
+        font-size: 14px;
+    }
+    .sectwosub_img{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .sectwosub_img img{
+        padding-top: 15px;
+        height: 80px;
+    }
+
+    .secthree_bot_text h1{
+        font-size: 30px;
+    }
+
+    .banner_cat_in_tit h1{
+        font-size: 30px;
+    }
+    .secfour_introduc_title h1{
+        font-size: 30px;
+    }
+    .secthree_platform_tit h1{
+        font-size: 30px;
+    }
+    .secthree_platform_des p{
+        font-size: 16px;
+    }
+    .btn_secthree_pf{
+        font-size: 16px;
+    }
+
+    .secfive_introduc_sub_text .fa{
+        font-size: 8px;
+
+    }
+    .secfive_introduc_sub_text p{
+        font-size: 16px;
+    }
+    .secfive_introduc_tit h1{
+        font-size: 30px;
+    }
+    .secone_part1_img{
+        height: 210px;
+    }
+    .secone_part1_img_des p{
+        font-size: 20px;
+    }
+
+
+    .sectwo_services_title h1{
+        font-size: 24px;
+    }
+    .sectwo_services_des p{
+        font-size: 14px;
+    }
+    .secone_designtools_text h1{
+        font-size: 30px;
+    }
+}
+
+/*lg 1200 -   1280 ____________________*/
+@media all and (max-width: 1280px){
+    .header_intro_text h1{
+        font-size: 35px;
+    }
+    .ul_mainmenu li:after{
+        right: -5px;
+    }
+    .ul_mainmenu li a{
+        margin-right: 0;
+        font-size: 13px;
+    }
+    .footer_one_listinfo {
+        margin-top: 17px;
+    }
+    .footer_one_listinfo li {
+        font-size: 12px;
+    }
+    .footer_link_list li a {
+        font-size: 12px;
+    }
+    .footer_bot p {
+        font-size: 12px;
+    }
+}
+@media all and (max-width: 1200px){
+    .row_downloadtwo_left{
+        padding-right: 0px;
+    }
+    .row_downloadtwo_right{
+        padding-left: 0px;
+    }
+
+}
+@media all and (max-width: 1135px){
+  .row_mainmenu{
+    display: none;
+}
+.row_menuhidden{
+    display: flex;
+}
+}
+/*md 992  -   1024 ____________________*/
+@media all and (max-width: 1024px){
+
+    .contact_bot_sub{
+        min-height: 130px;
+    }
+    .contact_bot_sub_text a{
+        font-size: 16px;
+    }
+    .secone_title h1{
+        font-size: 26px;
+    }
+    .secone_info_tit p{
+        font-size: 24px;
+    }
+    .secone_info_des p{
+        font-size: 14px;
+    }
+    .sectwo_tit h1{
+        font-size: 20px;
+        margin:18.5px 0;
+    }
+    .header_logo{
+        padding-top: 0;
+    }
+    .header_logo img{
+        width: 100%;
+    }
+    .sectwosub{
+        /*min-height: 270px;*/
+    }
+    .header_topright_list li a{
+        font-size: 8px;
+    }
+    #cssmenu > ul > li > a{
+        font-size: 11px;
+    }
+    #cssmenu ul ul li a{
+        font-size: 12px;
+        padding-top:10px 15px;
+    }
+    .header_intro_text h1{
+        font-size: 26px;
+    }
+    .headerbot_text span{
+        font-size: 30px;
+    }
+    .sectwo_des p{
+        font-size: 14px;
+    }
+    .secone_title{
+        margin-bottom: 0;
+    }
+
+    .secthree_bot_text h1{
+        font-size: 26px;
+    }
+    .header_intro{
+        margin-top: 0;
+    }
+}
+/*  1023 ____________________________*/
+
+/*sm 768 -   800 */
+@media all and (max-width: 768px){
+ .downloadone_sub{
+    padding: 30px 0;
+}
+.margin_bottom30{
+    margin-bottom: 30px;
+}
+
+.h3d-container{
+    padding: 0 3px;
+}
+.sectwosub_img img {
+    padding-top: 15px;
+    height: 75px;
+}
+/*.flex_end {
+    justify-content: flex-start;
+    }*/
+
+    #cssmenu > ul {
+        height: 200px;
+        overflow: auto;
+    }
+    #cssmenu {
+        background: rgba(0,0,0,0.8);
+    }
+
+    #cssmenu > ul > li.active > a {
+        background: rgba(60,151,100,0.4);
+    }
+    #cssmenu > ul > li > a {
+        color: rgba(60,151,100,1);
+    }
+    .header_intro{
+        display: none;
+    }
+
+    .language_mobi{
+        margin-top: 32px;
+    }
+    .secone_title h1 {
+        font-size: 24px;
+    }
+    .secone_info_stt p{
+        font-size: 35px;
+    }
+    .secone_info_tit p{
+        font-size: 20px;
+    }
+    .secone_info_des p{
+        font-size: 14px;
+    }
+    .oc_bh15_btn_svg_label{
+        font-size: 12px;
+    }
+    .sectwosub{
+        /*min-height: 250px;*/
+    }
+    .owl-theme .owl-nav.disabled+.owl-dots{
+        margin-top: 8px;
+    }
+    .secthree_bot_text h1{
+        font-size: 25px;
+    }
+    .mycontainer {
+        width: 90%;
+    }
+    .secthree_platform_tit h1{
+        font-size: 18px;
+    }
+    .secthree_platform_des p, .banner_cat_in_des p, .secone_designtools_text_des p{
+        font-size: 12px;
+    }
+    .contact_bot_sub_text p, .contact_bot_sub_text a, .sectwo_designtools_bot p{
+        font-size: 14px;
+    }
+    .secone_title h1, .banner_cat_in_tit h1,.secone_designtools_text h1, .sectwo_designtools_text h1 {
+        font-size: 22px;
+    }
+    .banner_cat{
+        height: 150px;
+    }
+    .contact_container .h3d-container{
+        padding: 0;
+    }
+    .contact_bot .h3d-container{
+        padding: 15px;
+    }
+    .contact_container_row{
+        padding: 20px 0;
+    }
+    .contact_bot_sub {
+        padding: 20px 10px;
+        border-radius: 16px;
+        background: #fff;
+        min-height: 97px;
+        margin-bottom: 5px;
+    }
+
+
+}
+@media all and (max-width: 767px){
+    .secone_video video{
+        height: 100%;
+        width: 100%;
+    }
+    .od_first {
+        order: 1;
+    }
+    .od_second {
+        order: 2;
+    }
+    .secthree_platform_tit h1{
+        text-align: center;
+    }
+    .secthree_platform_des p{
+        text-align: center;
+    }
+    .secthree_platform_button{
+        justify-content: center;
+    }
+    .section_one, .section_two, .secone_part1_pf, .secone_introduc, .secfour_introduc, .sectwo_platform,
+    .secone_services, .sectwo_services, .secfour_services ,.appdownload{
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .secone_info_margin75_0 {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .secone_info {
+        /*text-align: center;*/
+    }
+    .sectwosub, .secone_part2_sub {
+        margin-top: 0;
+    }
+    .secone_part1_pf {
+        padding-bottom: 10px;
+    }
+    .feature_item {
+        margin-bottom: 10px;
+    }
+    .main_gallary {
+        margin: 0;
+    }
+    .secone_info, .secone_img img {
+        width: 100%;
+    }
+    .secone_img img {
+        height: auto;
+    }
+    .secone_introduc, .secone_part2_pf {
+        padding-bottom: 0;
+    }
+    .sectwo_introduc, .secthree_introduc {
+        padding-bottom: 15px;
+        padding-top: 15px;
+    }
+    .secone_part2_sub_2_in p {
+        height: auto;
+    }
+    .secone_part2_sub_2 {
+        margin: 0;
+        padding: 0;
+    }
+    .secone_part2_sub, .downloadtwo {
+        padding: 0;
+    }
+    .secone_part2_sub_2_in p {
+        font-size: 20px;
+    }
+    .sectwosub {
+        margin-bottom: 10px;
+    }
+    .line_title_services {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    .downloadone {
+        padding: 30px 0;
+    }
+}
+
+/* mobile 576 -600 ____________________*/ 
+@media all and (max-width: 600px){
+
+    .btn_header_topright{
+        /*padding: 7.5px 15px;*/
+    }
+}
+
+@media all and (max-width: 575px){
+    .secfive_introduc_sub_img{
+        padding: 0;
+    }
+ .button_dl{
+    justify-content: center !important;
+}
+.downloadtwosub_img{
+    padding: 15px;
+}
+.downloadtwosub_img img{
+    max-width: 30%;
+}
+.button_window{
+    text-align: center !important;
+    margin-bottom: 1px;
+}
+.info_downloadtwo{
+    text-align: center !important;
+}
+}
+@media all and (max-width: 414px){
+
+    .header_logo{
+        padding-top: 18px;
+    }
+    .footer_link{
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .slide_main.owl-theme .owl-dots .owl-dot{
+        zoom:1;
+    }
+    .secone_title h1, .banner_cat_in_tit h1, .secone_designtools_text h1, .sectwo_designtools_text h1 {
+        /*font-size:18px;*/
+    }
+    .secthree_platform_des p, .banner_cat_in_des p, .secone_designtools_text_des p {
+        font-size: 12px;
+        width: 80%;
+        margin: 0 auto;
+        color: rgba(240,240,240,1);
+    }
+    .sectwo_des p {
+        font-size: 12px;
+        overflow: hidden;
+    }
+    .sectwosub{
+        padding: 0 5px;
+    }
+
+    .btn_secthree_pf{
+        margin-top: 10px;
+        font-size: 10px;
+    }
+    .secfour_introduc_des {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .secfour_introduc_des p {
+        color: rgba(159,159,159,1);
+        font-size: 16px;
+    }
+    .line_title {
+        width: 12%;
+    }
+    .secthree_tit {
+        position: absolute;
+        left: 50%;
+        top: 20%;
+        transform: translate(-50%,-50%);
+        z-index: 9999;
+    }
+    .headerbot_text span{
+        font-size: 25px;
+    }
+    .headerbot_text p{
+        font-size: 12px;
+    }
+}
+@media all and (max-width: 320px){
+    .appdownload_hd_contai{
+        justify-content: flex-end !important;
+    }
+    .appdownload_hd a{
+        font-size: 11px;
+    }
+    .btn_header_topright {
+        padding: 3.5px 7px;
+    }
+    .btn_hover {
+        font-size: 8px;
+    }
+}

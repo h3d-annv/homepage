@@ -24,7 +24,6 @@ Route::prefix('admin')->group(function(){
     });
 
     Route::group(['middleware' => ['auth:web'], 'namespace' => 'Admin'], function() {
-        Route::get('/', 'DashboardController@index')->name('admin.dashboard');
         Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard');
 
         Route::get('/product-category', 'ProductCategoryController@index')->name('admin.product-category.index');
@@ -44,12 +43,6 @@ Route::prefix('admin')->group(function(){
         Route::put('/product/activate', 'ProductController@activate')->name('admin.product.activate');
         Route::delete('/product', 'ProductController@remove')->name('admin.product.remove');
 
-
-
-
-
-
-        Route::get('/product/create', 'ProductController@create')->name('admin.product.create');
     });
 
 });
@@ -60,5 +53,12 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/login', function(){
    return redirect('/');
 });
+
+Route::get('/products', 'ProductCategoryController@index')->name('product-category.index');
+
+Route::get('/products/{param}', 'ProductCategoryController@show')->name('product-category.show');
+
+Route::get('/{param}', 'ProductCategoryController@show')->name('product-category.show');
+
 
 

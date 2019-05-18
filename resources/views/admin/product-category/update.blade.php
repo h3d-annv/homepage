@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Add new Category</div>
+                    <div class="panel-heading">Update Category Info</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.product-category.modify') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
