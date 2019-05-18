@@ -65,10 +65,6 @@ class ProductController extends Controller
             }
             $data['image'] = $newImageName;
 
-//             Build unique slug
-            $slug = str_slug($data['title_en']);
-            $data['slug'] = StringHelper::buildUniqueSlug('product', 0, $slug);
-
             $result = $this->productRepository->store($data);
 
             if($result){

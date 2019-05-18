@@ -11,6 +11,6 @@ class Product extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'title_vi', 'title_en', 'slug', 'image', 'description_vi', 'description_en', 'content_vi', 'content_en', 'is_active', 'category_id'
+        'title_vi', 'title_en', 'image', 'content_vi', 'content_en', 'is_active', 'category_id'
     ];
 }
