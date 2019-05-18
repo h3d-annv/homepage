@@ -53,19 +53,6 @@
                                     @endif
                                 </div>
                             </div>
-{{--                            <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">--}}
-{{--                                <label for="slug" class="col-md-2 control-label">Slug</label>--}}
-
-{{--                                <div class="col-md-8">--}}
-{{--                                    <input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}" required readonly>--}}
-
-{{--                                    @if ($errors->has('slug'))--}}
-{{--                                        <span class="help-block">--}}
-{{--                                        <strong>{{ $errors->first('slug') }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <input type="hidden" name="is_active" value="0">
                             <div class="form-group{{ $errors->has('is_active') ? ' has-error' : '' }}">
                                 <label style="padding-top: 0 !important;" for="is_active" class="col-md-2 control-label">Enable?</label>
@@ -87,32 +74,6 @@
                                 <label for="image" class="col-md-2 control-label" >Image</label>
                                 <div class="col-md-8">
                                     <input class="form-control" type="file" id="image" name="image" >
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('description_vi') ? ' has-error' : '' }}">
-                                <label for="description_vi" class="col-md-2 control-label">Vietnamese Description</label>
-
-                                <div class="col-md-8">
-                                    <textarea id="description_vi" rows="10" class="form-control" name="description_vi" value="{{ old('description_vi') }}" autofocus></textarea>
-
-                                    @if ($errors->has('description_vi'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('description_vi') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('description_en') ? ' has-error' : '' }}">
-                                <label for="description_en" class="col-md-2 control-label">English Description</label>
-
-                                <div class="col-md-8">
-                                    <textarea id="description_en" rows="10" class="form-control" name="description_en" value="{{ old('description_en') }}" required autofocus></textarea>
-
-                                    @if ($errors->has('description_en'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('description_en') }}</strong>
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
                             <div class="form-group{{ $errors->has('content_vi') ? ' has-error' : '' }}">
