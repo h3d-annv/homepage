@@ -81,8 +81,8 @@
     width: auto;
 }
 #log .modal-content{
-    width: 95%;
-    margin-left: 2%;
+    width: 82%;
+    margin-left: 17.5%;
 }
 /* The Close Button (x) */
 #update_version .close, #log .close {
