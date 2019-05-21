@@ -43,6 +43,18 @@ Route::prefix('admin')->group(function(){
         Route::put('/product/activate', 'ProductController@activate')->name('admin.product.activate');
         Route::delete('/product', 'ProductController@remove')->name('admin.product.remove');
 
+        Route::get('/download','DownloadController@index')->name('admin.download.index');
+        Route::get('/download/operation-system','OperationSystemController@index')->name('admin.download.operation-system.index');
+        Route::post('/download/operation-system/store','OperationSystemController@store')->name('admin.download.operation-system.store');
+        Route::get('/download/operation-system/update','OperationSystemController@update')->name('admin.download.operation-system.update');
+
+        Route::get('/download/version/update', 'VersionController@update')->name('admin.download.version.update');
+        Route::post('/download/version/store', 'VersionController@store')->name('admin.download.version.store');
+        Route::get('/download/version/showVer', 'VersionController@showVer')->name('admin.download.version.showVer');
+
+        Route::post('/download/log/store', 'LogController@store')->name('admin.download.log.store');
+        Route::get('/download/log/index', 'LogController@index')->name('admin.download.log.index');
+
     });
 
 });
