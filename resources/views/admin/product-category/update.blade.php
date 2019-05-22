@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-1">
+                <br>
                 <div class="panel panel-default">
                     <div class="panel-heading">Update Category Info</div>
                     <div class="panel-body">

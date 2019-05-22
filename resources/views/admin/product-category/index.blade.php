@@ -4,11 +4,11 @@
     <section class="content">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-13">
 
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title text-bold">Search section</h3>
+                        <h3 class="box-title text-bold">Search</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -22,7 +22,7 @@
                                 @csrf
                                 <div class="col-md-4">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="search string here ..." name="title" value="{{ $title }}">
+                                        <input type="text" class="form-control" placeholder="Search" name="title" value="{{ $title }}">
                                         <span class="input-group-btn">
                                             <input type="submit" class="btn btn-block btn-success" value="Search">
                                         </span>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="box box-success">
                     <div class="box-header">
-                        <h3 class="box-title text-bold">Listing section</h3>
+                        <h3 class="box-title text-bold">Listing</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -91,18 +91,6 @@
                                     </tr>
                                 @endforeach
                                 </tbody>
-                                @if(count($result) > 0)
-                                    <tfoot>
-                                    <tr>
-                                        <th width="10%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Image</th>
-                                        <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Vietnamese name</th>
-                                        <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">English name</th>
-                                        <th width="15%" class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">Slug</th>
-                                        <th width="10%" class="text-center hidden-xs" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending">Status</th>
-                                        <th class="text-center" tabindex="0" aria-controls="example2" rowspan="1" colspan="2" aria-label="Action: activate to sort column ascending">Actions</th>
-                                    </tr>
-                                    </tfoot>
-                                @endif
                             </table>
                             {{ $result->appends(Request::get('page'))->links()}}
                         </div>

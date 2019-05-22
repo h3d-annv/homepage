@@ -7,9 +7,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>House3D | Administration</title>
+    <title>House3D Administrator</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" href="{{ asset('admin/img/favicon.ico') }}">
     <!-- Bootstrap 3.3.6 -->
     <link href="{{ asset("admin/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
 
@@ -67,10 +68,22 @@ desired effect
             <h1>
                 Dashboard
             </h1>
-            <ol class="breadcrumb">
-                <!-- li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li-->
-                <li class="active">Dashboard</li>
-            </ol>
+{{--            <ol class="breadcrumb">--}}
+{{--                <!-- li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li-->--}}
+{{--                <li class="active">Dashboard</li>--}}
+{{--            </ol>--}}
+            <br>
+            <div class="row">
+                <div class="col-md-13">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <div class="box-title">Login status</div>
+                        </div>
+
+                        <div class="box-body">You are logged in!</div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Main content -->

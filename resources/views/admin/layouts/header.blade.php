@@ -2,11 +2,11 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="dashboard" class="logo">
+    <a href="{{ route('admin.dashboard') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>H</b>3D</span>
+      <span class="logo-mini"><img src="{{ asset('admin/img/logo-small.png') }}"></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">H3D Homepage</span>
+      <span class="logo-lg"><img src="{{ asset('admin/img/logo-big.png') }}"  style="margin-left: -35%"></span>
     </a>
 
     <!-- Header Navbar -->
@@ -33,21 +33,22 @@
                 <img src="{{ asset("admin/img/avatar5.png") }}" class="img-circle" alt="User Image">
 
                 <p>
-                  Hello {{ Auth::user()->name }}
+                  Hello <b>{{ Auth::user()->name }}</b>
+                    <i>{{Auth::user()->email}}</i>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                @if (Auth::guest())
                   <div class="pull-left">
-                    <a href="{{ route('admin.login') }}" class="btn btn-default btn-flat">Login</a>
+                    <a href="{{ route('admin.login') }}" class="btn btn-flat">Login</a>
                   </div>
                @else
                  <div class="pull-left">
-                    <a href="{{ url('profile') }}" class="btn btn-default btn-flat">Profile</a>
+                    <a href="{{ url('profile') }}" class="btn btn-primary">Profile</a>
                   </div>
                  <div class="pull-right">
-                    <a class="btn btn-default btn-flat" href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <a class="btn btn-danger" href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     Logout
                     </a>
                  </div>

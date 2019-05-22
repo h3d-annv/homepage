@@ -11,6 +11,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ asset('admin/img/favicon.ico') }}">
     <!-- Bootstrap 3.3.6 -->
     <link href="{{ asset("admin/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
     <!-- Font Awesome -->
@@ -25,6 +26,7 @@
       apply the skin class to the body tag so the changes take effect.
       -->
     <link href="{{ asset("admin/css/_all-skins.min.css")}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("admin/css/skin-green.min.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/app-template.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/popup.css') }}" rel="stylesheet" type="text/css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
