@@ -10,6 +10,7 @@
     <title>House3D Administrator</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap 3.3.6 -->
     <link href="{{ asset("admin/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
     <!-- Font Awesome -->
@@ -25,6 +26,7 @@
       -->
     <link href="{{ asset("admin/css/_all-skins.min.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin/css/app-template.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/popup.css') }}" rel="stylesheet" type="text/css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
