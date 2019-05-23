@@ -34,6 +34,7 @@
 
                 <p>
                   Hello <b>{{ Auth::user()->name }}</b>
+                    <br>
                     <i>{{Auth::user()->email}}</i>
                 </p>
               </li>
