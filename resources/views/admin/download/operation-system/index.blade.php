@@ -1,11 +1,10 @@
 @extends('admin.download.base')
 @section('action-content')
     <div id="update_version" class="modal">
-        <form class="modal-content animate">
+        <form class="modal-content animate" id="add_new">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('update_version').style.display='none'" class="close" title="Close Modal">&times;</span>
             </div>
-            {{--{{ csrf_field() }}--}}
             <div class="container">
                 <div class="form-group">
                     <label for="os_name" class="col-md-2 control-label">OS</label>
@@ -51,7 +50,7 @@
                 </div>
                 <br>
                 <div class="form-group text-center">
-                    <button class="btn btn-success" type="submit"  id="add_new">Add</button>
+                    <button class="btn btn-success" type="submit" style="width: 20%;margin-top: 3%" >Add</button>
                 </div>
             </div>
         </form>
@@ -60,24 +59,16 @@
         <div class="box" style="border-top:0">
             <br>
             <div class="box box-success">
-                {{--<pre>--}}
-                {{--@foreach($li as $item)--}}
-                {{--{{$item->os_name}}--}}
-                {{--@endforeach--}}
-                {{--@foreach($lin as $items)--}}
-                {{--{{$items->os_name}}--}}
-                {{--@endforeach--}}
-                {{--</pre>--}}
                 <div class="col-sm-13" style="position: relative">
                     <div class= "col-sm-13">
-                        <form>
+                        <form id="new-os">
                             <div class="form-group">
                                 <div class="col-md-1">
                                     <label for="os_name" class=" control-label">Name</label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" name="os_name" id="o" value="" placeholder="OS name" style="width: 40%;float: left" required>
-                                    <button class="btn btn-success" type="submit" id="new-os" style="float: left;margin-left: 20px;width:20%">
+                                    <button class="btn btn-success" type="submit"  style="float: left;margin-left: 20px;width:20%">
                                         Add new OS
                                     </button>
                                 </div>
@@ -139,7 +130,7 @@
                                 <td class="text-center">...</td>
                                 <td class="text-center">...</td>
                                 <td class="text-center">
-                                    <button  class="btn btn-success col-sm-4 col-xs-5 btn-margin update_ver" id="{{$li_n->id}}*{{$li_n->os_name}}" style="width: 20%; float: left;margin-left: 51%;" onclick="document.getElementById('update_version').style.display='block'">Add New</button>
+                                    <button  class="btn btn-success col-sm-4 col-xs-5 btn-margin update_ver" id="{{$li_n->id}}*{{$li_n->os_name}}" style="width: 20%; float: left;margin-left: 53.5%;" onclick="document.getElementById('update_version').style.display='block'">Add New</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -153,11 +144,11 @@
     <div id="log" class="modal">
         <div class="modal-content animate">
             <div class="imgcontainer">
-                <span onclick="document.getElementById('log').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('log').style.display='none'" class="close closeLog" title="Close Modal">&times;</span>
             </div>
 
             <div class="container">
-                <h4>Lịch sử thay đổi </h4>
+                <h4></h4>
                 <table class="table table-bordered table-hover dataTable" role="grid" >
                     <thead>
                         <tr role="row">
