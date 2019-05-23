@@ -1,6 +1,6 @@
 window.onload = function() {
     //Add new operation system
-    $("#new-os").click(function () {
+    $("#new-os").submit(function () {
         var osn = $('#o').val();
         $.ajaxSetup({
             headers: {
@@ -87,8 +87,7 @@ window.onload = function() {
         var id_os = arr[0];
         var os_name = arr[1];
         $('#os_name').text(os_name);
-        $('#add_new').click(function (e) {
-            e.preventDefault();
+        $('#add_new').submit(function () {
             var version = $('#version').val();
             var path = $('#path').val();
             var des = $('#des').val();
@@ -179,7 +178,7 @@ window.onload = function() {
                     array = array.split('}');
                     var count = document.querySelectorAll('tr.log_ver');
                     if (count.length <1) {
-                        $("h4").append(os_name);
+                        $("h4").append('Lịch sử thay đổi '+os_name);
                         for (var tr = 0; tr < array.length - 1; tr++) {
                             var arr = formatDataLog(tr, array);
                             $('tbody.logs').append(
@@ -214,6 +213,7 @@ window.onload = function() {
                     }
                 }
             }
+            arr[0] = arr[0].substring(0,arr[0].length-8).concat(' + 07:00');
 
         }
         else {
@@ -231,16 +231,16 @@ window.onload = function() {
                     }
                 }
             }
+            arr[0] = arr[0].substring(0,arr[0].length-8).concat(' + 07:00');
         }
         return arr;
     }
-    function removeSymbol(obj,symbol) {
-        var symb = obj.indexOf(symbol);
-        while(symb !== -1){
-            obj = obj.replace(symbol,"");
-            symb = obj.indexOf(symbol);
-        }
-    }
+    $('.closeLog').click(function (e) {
+        e.preventDefault();
+        $('h4').text('');
+        $('.log_ver').remove();
+    })
+
 }
 
 
