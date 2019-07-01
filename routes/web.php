@@ -56,6 +56,30 @@ Route::prefix('admin')->group(function(){
         Route::post('/download/log/store', 'LogController@store')->name('admin.download.log.store');
         Route::get('/download/log/index', 'LogController@index')->name('admin.download.log.index');
 
+        Route::get('/about-us/intro','IntroductionController@index')->name('admin.about-us.intro.index');
+        Route::post('/about-us/intro/store', 'IntroductionController@store')->name('admin.about-us.intro.store');
+        Route::post('/about-us/intro/modify', 'IntroductionController@modify')->name('admin.about-us.intro.modify');
+        Route::put('/about-us/intro/activate', 'IntroductionController@activate')->name('admin.about-us.intro.activate');
+        Route::put('/about-us/intro/sort', 'IntroductionController@sort')->name('admin.about-us.intro.sort');
+        Route::get('/about-us/intro/getData','IntroductionController@getData')->name('admin.about-us.intro.getData');
+        Route::delete('/about-us/intro', 'IntroductionController@remove')->name('admin.about-us.intro.remove');
+
+        Route::get('/about-us/vision','VisionController@index')->name('admin.about-us.vision.index');
+        Route::post('/about-us/vision/store', 'VisionController@store')->name('admin.about-us.vision.store');
+        Route::post('/about-us/vision/modify', 'VisionController@modify')->name('admin.about-us.vision.modify');
+        Route::put('/about-us/vision/activate', 'VisionController@activate')->name('admin.about-us.vision.activate');
+        Route::put('/about-us/vision/sort', 'VisionController@sort')->name('admin.about-us.vision.sort');
+        Route::get('/about-us/vision/getData','VisionController@getData')->name('admin.about-us.vision.getData');
+        Route::delete('/about-us/vision', 'VisionController@remove')->name('admin.about-us.vision.remove');
+
+        Route::get('/about-us/our-team','OurTeamController@index')->name('admin.about-us.our-team.index');
+        Route::post('/about-us/our-team/store', 'OurTeamController@store')->name('admin.about-us.our-team.store');
+        Route::post('/about-us/our-team/modify', 'OurTeamController@modify')->name('admin.about-us.our-team.modify');
+        Route::put('/about-us/our-team/activate', 'OurTeamController@activate')->name('admin.about-us.our-team.activate');
+        Route::put('/about-us/our-team/sort', 'OurTeamController@sort')->name('admin.about-us.our-team.sort');
+        Route::get('/about-us/our-team/getData','OurTeamController@getData')->name('admin.about-us.our-team.getData');
+        Route::delete('/about-us/our-team', 'OurTeamController@remove')->name('admin.about-us.our-team.remove');
+
         Route::get('/vr-gallery', 'VrGalleryController@index')->name('admin.vr-gallery.index');
         Route::get('/vr-gallery/create', 'VrGalleryController@create')->name('admin.vr-gallery.create');
         Route::post('/vr-gallery/store', 'VrGalleryController@store')->name('admin.vr-gallery.store');

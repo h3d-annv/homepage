@@ -74,15 +74,20 @@
 }
 
 /* Modal Content/Box */
-#update_version .modal-content, #log .modal-content {
+#update_version .modal-content, #log .modal-content,#our-team .modal-content {
     background-color: #fefefe;
     margin: 5% 25% 15% 25%;
     border: 1px solid #888;
     width: auto;
 }
-#log .modal-content{
+#log .modal-content,#intro .modal-content, #vision .modal-content,#our-team .modal-content{
     width: 82%;
     margin-left: 17.5%;
+}
+#intro .modal-content, #vision .modal-content{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 570px;
 }
 /* The Close Button (x) */
 #update_version .close, #log .close {
@@ -99,7 +104,15 @@
     /*color: red;*/
     cursor: pointer;
 }
-
+.img_box{
+    width:300px;
+    height:300px;
+    border: 2px dashed #808080;
+    margin-bottom: 2em;
+    padding:0;
+    overflow: hidden;
+    border-radius: 7px;
+}
 /* Add Zoom Animation */
 #update_version .animate, #log .animate {
     -webkit-animation: animatezoom 0.6s;
