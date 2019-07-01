@@ -41,7 +41,7 @@
                     <div class="box-body">
                         <div class="col-sm-12">
                             <a href="{{ route('admin.product-category.create') }}" class="btn btn-success" role="button">Add new</a>
-                            <a href="{{ route('product-category.index') }}" class="btn btn-primary" role="button">View</a>
+                            <a href="{{ route('product-category.index') }}" class="btn btn-primary" role="button" target="_blank">View</a>
                         </div>
                         <div class="col-sm-12">
                             <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
@@ -78,7 +78,7 @@
                                                    data-token="{{ csrf_token() }}" data-id="{{ $item->id }}" data-url="{{ route('admin.product-category.sort') }}" autofocus>
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{ route('product-category.show', ['param' => $item->slug ]) }}" class="btn btn-primary col-sm-3 col-xs-5" style="margin-right:5%;width:30%;">
+                                            <a href="{{ route('product-category.show', ['param' => $item->slug ]) }}" class="btn btn-primary col-sm-3 col-xs-5" style="margin-right:5%;width:30%;" target="_blank">
                                                 View
                                             </a>
                                             <a href="{{ route('admin.product-category.update', ['id' => $item->id]) }}" class="btn btn-success col-sm-3 col-xs-5" style="margin-right:5%;width:30%;">

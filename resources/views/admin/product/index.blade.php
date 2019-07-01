@@ -78,7 +78,7 @@
                                         </td>
                                         <td>
                                             <input id="sort" type="number" class="form-control inputSort" name="sort" value="{{ $item->sort }}"
-                                                   data-token="{{ csrf_token() }}" data-id="{{ $item->id }}" data-url="{{ route('admin.product-category.sort') }}" autofocus>
+                                                   data-token="{{ csrf_token() }}" data-id="{{ $item->id }}" data-url="{{ route('admin.product.sort') }}" autofocus>
                                         </td>
                                         <td class="text-center">
                                             <a href="{{ route('admin.product.update', ['id' => $item->id]) }}" class="btn btn-success col-sm-6 col-xs-5" style="margin-right: 10%;padding: 5px;font-size: 14px;width:45%;">

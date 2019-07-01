@@ -49,6 +49,18 @@
 {{--              <a href="{{ url('admin/introduce/su-menh') }}">Destiny</a>--}}
 {{--          </ul>--}}
 {{--        </li>--}}
+        <li class="treeview {{(Request::segment(2) == 'vr-gallery' || Request::segment(2) == 'partner')? 'active' : '' }}">
+          <a href="#"><i class="fa fa-image"></i> <span>Album</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{(Request::segment(2) == 'vr-gallery')? 'active' : '' }}">
+              <a href="{{ url('admin/vr-gallery') }}">VR Gallery</a>
+            </li>
+          </ul>
+        </li>
         <li class="treeview {{(Request::segment(2) == 'product-category' || Request::segment(2) == 'product')? 'active' : '' }}">
           <a href="#"><i class="fa fa-television"></i> <span>Product</span>
             <span class="pull-right-container">
