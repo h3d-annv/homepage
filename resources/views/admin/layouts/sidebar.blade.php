@@ -76,6 +76,7 @@
             </li>
           </ul>
         </li>
+        <li><a href="{{ url('admin/changelog')}}"><i class="fa fa-clipboard"></i> <span>Changelog</span></a></li>
         <li class="treeview {{(Request::segment(2) == 'download')?'active':''}}">
           <a href="#"><i class="fa fa-link"></i> <span>Downloads</span>
             <span class="pull-right-container">
