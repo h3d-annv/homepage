@@ -167,3 +167,28 @@ function to_slug(str){
     // return
     return str;
 }
+function  addNewObj(url, dataObj) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        method: 'POST',
+        url: url,
+        data:dataObj,
+        dataType: false,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function (res) {
+            if (res.success) {
+                alert('Done');
+                console.log(res.success);
+                location.reload();
+            } else {
+                alert('Failed');
+            }
+        }
+    })
+}

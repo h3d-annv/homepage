@@ -89,6 +89,27 @@
             </li>
           </ul>
         </li>
+        <li class="treeview {{(Request::segment(2) == 'about-us')?'active':''}}">
+          <a href="#"><i class="fa fa-link"></i> <span>About us</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="treeview {{(Request::segment(2) == 'intro')?'active':''}}">
+              <a href="{{ url('admin/about-us/intro')}}"> <span>Introduction</span>
+              </a>
+            </li>
+            <li class="treeview {{(Request::segment(2) == 'vision')?'active':''}}">
+              <a href="{{ url('admin/about-us/vision')}}"> <span>Vision</span>
+              </a>
+            </li>
+            <li class="treeview {{(Request::segment(2) == 'our-team')?'active':''}}">
+              <a href="{{ url('admin/about-us/our-team')}}"> <span>Our Team</span>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
