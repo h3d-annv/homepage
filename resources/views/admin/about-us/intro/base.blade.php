@@ -1,5 +1,6 @@
 @extends('admin.layouts.app-template')
 @section('content')
+    <script src="../../../vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">

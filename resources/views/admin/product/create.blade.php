@@ -13,7 +13,7 @@
                             <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                                 <label for="category_id" class="col-md-2 control-label">Category</label>
                                 <div class="col-md-8">
-                                    <select name="category_id" class="age-range" value="{{old('category_id')}}" required>
+                                    <select name="category_id" class="form-control" value="{{old('category_id')}}" required>
                                         <option value="" disabled selected>Choose category</option>
                                         <option value="" disabled>------</option>
                                         @foreach($categories as $category)

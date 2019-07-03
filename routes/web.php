@@ -88,6 +88,12 @@ Route::prefix('admin')->group(function(){
         Route::put('/vr-gallery/activate', 'VrGalleryController@activate')->name('admin.vr-gallery.activate');
         Route::delete('/vr-gallery', 'VrGalleryController@remove')->name('admin.vr-gallery.remove');
         Route::put('/vr-gallery/sort', 'VrGalleryController@sort')->name('admin.vr-gallery.sort');
+
+        Route::get('/changelog', 'ChangelogController@index')->name('admin.changelog.index');
+        Route::get('/changelog/create', 'ChangelogController@create')->name('admin.changelog.create');
+        Route::post('/changelog/store', 'ChangelogController@store')->name('admin.changelog.store');
+        Route::get('/changelog/update/{id}', 'ChangelogController@update')->name('admin.changelog.update');
+        Route::post('/changelog/modify', 'ChangelogController@modify')->name('admin.changelog.modify');
     });
 
 });

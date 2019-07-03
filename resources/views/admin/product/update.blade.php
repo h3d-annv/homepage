@@ -17,7 +17,7 @@
                             <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                                 <label for="category_id" class="col-md-2 control-label">Category</label>
                                 <div class="col-md-8" id="cate">
-                                    <select name="category_id" class="age-range" value="{{old('category_id')}}" required>
+                                    <select name="category_id" class="form-control" value="{{old('category_id')}}" required>
                                         <option {{ old('category_id') ? "" : "selected" }} disabled>{{ $current_category }} (No change)</option>
                                         <option value="" disabled>------</option>
                                         @foreach($categories as $category)
