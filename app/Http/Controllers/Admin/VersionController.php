@@ -41,26 +41,21 @@ class VersionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VersionRequest $request)
     {
-        $data = $request->all();
-        $result = $this->versionRepository->addNew($data);
+        if($request->validated()){
+            $data = $request->all();
+            $dataLog = $request->except(['updated_by','description']);
+            $result = $this->versionRepository->addNew($data);
 
-        $count = @json_encode($result[0], JSON_UNESCAPED_UNICODE);
-        if($count === '[]'){
-            $vers_new = [$data['version'],$data['version_path']];
-            $vers_old = [$data['operation_system_id'],'init','[init]'];
-            $logs_result1 = $this->versionRepository->writeLog($vers_new,$vers_old);
-            $log1 = @json_encode($logs_result1, JSON_UNESCAPED_UNICODE);
-            return response()->json(['success' => $log1]);
-            }
-            else{
-                $vers_new = [$data['version'],$data['version_path']];
-                $vers_old = [$data['operation_system_id'],$result[1],$result[2]];
-                $logs_result2 = $this->versionRepository->writeLog($vers_new,$vers_old);
-                $log2 = @json_encode($logs_result2, JSON_UNESCAPED_UNICODE);
-                return response()->json(['success'=>$log2]);
-            }
+            $log = $this->versionRepository->createLog($dataLog,$result);
+
+            $c = @json_encode($log, JSON_UNESCAPED_UNICODE);
+
+            return response()->json(['success'=>$c]);
+
+        }
+
     }
 
     /**
@@ -91,18 +86,23 @@ class VersionController extends Controller
      * @param  \App\Version  $version
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Version $version)
+    public function update(Request $request)
     {
         $data = $request->all();
-        $id = $data['id_os'];
-        $ver = [$data['version_now'],$data['version_update']];
-        $upVer = $this->versionRepository->updated($id,$ver);
-        if($upVer){
-            $vers_new = [$data['version_update']];
-            $vers_old = [$data['id_os'],$data['version_now']];
-            $logs_result = $this->versionRepository->writeLog($vers_new,$vers_old);
-            $lo = @json_encode($logs_result, JSON_UNESCAPED_UNICODE);
-            return response()->json(['success'=>$lo]);
+        $id = $data['operation_system_id'];
+        $ver = $data['version'];
+        $result = $this->versionRepository->updated($id,$ver);
+        if($result){
+            $dataLog = [
+              'operation_system_id' => $data['operation_system_id'],
+              'version'=>$data['version'],
+              'version_path'=>$result,
+              'created_by'=>$data['created_by']
+            ];
+            $log = $this->versionRepository->createLog($dataLog,[$data['version_now'],$data['version_old_path']]);
+            $c = @json_encode($log, JSON_UNESCAPED_UNICODE);
+
+            return response()->json(['success'=>$c]);
         }
     }
 

@@ -8,6 +8,7 @@
 
 namespace App\Repositories;
 use App\OperationSystem;
+use Illuminate\Database\Eloquent\Collection;
 
 class OperationSystemRepository extends CommonRepository
 {
@@ -24,5 +25,8 @@ class OperationSystemRepository extends CommonRepository
     public function update($osn, $ver = []){
         $ver1 = $ver[1];
         return $this->model->where('os_name',$osn)->get();
+    }
+    public function equal($data){
+        return $data = $this->model->where('os_name',$data)->get();
     }
 }

@@ -80,7 +80,7 @@
     border: 1px solid #888;
     width: auto;
 }
-#log .modal-content,#intro .modal-content, #vision .modal-content,#our-team .modal-content{
+#intro .modal-content, #vision .modal-content,#our-team .modal-content{
     width: 82%;
     margin-left: 17.5%;
 }
@@ -88,6 +88,10 @@
     overflow-x: hidden;
     overflow-y: scroll;
     height: 570px;
+}
+#log .modal-content{
+    width: 98%;
+    margin-left: 1%;
 }
 /* The Close Button (x) */
 #update_version .close, #log .close {

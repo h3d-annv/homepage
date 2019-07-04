@@ -21,35 +21,28 @@ class VersionRequest extends FormRequest
     {
         if($this->isMethod('post')){
 
-            if(strpos($this->route()->action['as'], 'search') !== false){
-                return $this->searchRules();
-            }
             return $this->createRules();
 
-        }elseif($this->isMethod('put')){
+        }
+        if($this->isMethod('put')){
 
             return $this->updateRules();
 
         }
     }
-    public function searchRules(){
-
-        return [
-            'os_name' => 'max:50',
-        ];
-    }
 
     public function createRules(){
 
         return [
-            'os_name' => 'required|max:50'
+            'version' => 'required',
+            'version_path' => 'required'
         ];
     }
 
     public function updateRules(){
 
         return [
-            'os_name' => 'required|max:50'
+//            'os_name' => 'required|max:50'
         ];
     }
 }

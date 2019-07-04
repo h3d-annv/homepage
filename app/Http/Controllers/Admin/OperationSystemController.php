@@ -7,6 +7,7 @@ use App\Repositories\OperationSystemRepository;
 use App\Http\Requests\OperationSystemRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class OperationSystemController extends Controller
 {
@@ -25,10 +26,11 @@ class OperationSystemController extends Controller
         $list_all = $this->operationSystemRepository->showData();
         $list = $list_all[0];
         $list_nover = $list_all[1];
-//        $ver = Version::all();
+        $user = Auth::user();
         return view('admin/download/operation-system/index',[
             'li'=>$list,
-        'lin'=>$list_nover
+            'lin'=>$list_nover,
+            'user' =>$user->name
         ]);
     }
 
@@ -48,12 +50,20 @@ class OperationSystemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OperationSystemRequest $request)
     {
-        $data = $request->all();
-        $result = $this->operationSystemRepository->store($data);
-        if($result){
-            return response()->json(['success'=>'true']);
+        if($request->validated()){
+            $data = $request->all();
+            $e = $data['os_name'];
+            $equal = $this->operationSystemRepository->equal($e);
+            if(count($equal) === 0){
+                $result = $this->operationSystemRepository->store($data);
+                if($result){
+                    return response()->json(['success'=>'Success']);
+                }
+            }
+            else return response()->json(['success'=>"Exits"]);
+
         }
     }
 
