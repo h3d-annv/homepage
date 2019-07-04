@@ -32,9 +32,6 @@ class OperationSystemRequest extends FormRequest
     {
         if($this->isMethod('post')){
 
-            if(strpos($this->route()->action['as'], 'search') !== false){
-                return $this->searchRules();
-            }
             return $this->createRules();
 
         }elseif($this->isMethod('put')){
@@ -44,12 +41,6 @@ class OperationSystemRequest extends FormRequest
         }
     }
 
-    public function searchRules(){
-
-        return [
-            'os_name' => 'max:50',
-        ];
-    }
 
     public function createRules(){
 

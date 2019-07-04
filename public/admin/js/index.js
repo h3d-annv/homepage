@@ -183,11 +183,19 @@ function  addNewObj(url, dataObj) {
         contentType: false,
         success: function (res) {
             if (res.success) {
-                alert('Done');
                 console.log(res.success);
                 location.reload();
-            } else {
-                alert('Failed');
+            }
+        },
+        error: function (d) {
+            if( d.status === 422 ) {
+                var err = d.responseJSON;
+                errorsHtml = '<div class="alert alert-danger"><ul>';
+                $.each( err.errors, function( key, value ) {
+                    errorsHtml += '<li>' + value[0] + '</li>';
+                });
+                errorsHtml += '</ul></di>';
+                $( '#form-errors' ).html( errorsHtml );
             }
         }
     })

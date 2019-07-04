@@ -1,62 +1,65 @@
 window.onload = function() {
     //Add new operation system
-    $("#new-os").submit(function () {
-        var osn = $('#o').val();
+    $("#new-os").submit(function (e) {
+        e.preventDefault();
+        $('#text_err').remove();
+        var dataObj = new FormData($(this)[0]);
+        var url = '../download/operation-system/store';
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        jQuery.ajax({
-            url:'../download/operation-system/store',
-            type:'POST',
-            data:{
-                os_name: osn
-            },
-            success: function( data ){
-                if(data.success){
+        $.ajax({
+            method: 'POST',
+            url: url,
+            data:dataObj,
+            dataType: false,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                if (res.success === "Success") {
                     location.reload();
                 }
-            },
+                else if(res.success === "Exits"){
+                    $('#err').append('<strong style="color:red;" id="text_err">Operation System exists</strong>');
+                }
+                else{
+                    alert('Fails');
+                }
+            }
         })
+
     })
+
     //save logs
+    function format(data) {
+        if(data.indexOf("\[") !== -1){
+           return data[0];
+        }else{
+            return data;
+        }
+    }
     function logs(data_log){
-        var arr = data_log.substring(1,data_log.length-1);
-        arr =  arr.split(',');
-        for(var i=0;i<arr.length;i++){
-            if( (i%2)=== 0) {
-                var syn = arr[i].indexOf("\[");
-                if( syn === -1 ) {
-                    arr[i] = arr[i].substring(1,arr[i].length-1);
-                }
-                else
-                    arr[i] = arr[i].substring(2, arr[i].length - 2);
-            }
-            else {
-                var syn = arr[i].indexOf("\[");
-                if( syn === -1 ) {
-                    arr[i] = arr[i].substring(1,arr[i].length-1);
-                }
-                else
-                    arr[i] = arr[i].substring(2,arr[i].length-2);
-            }
-        }
-        var id = arr[0];
-        var time = arr[1];
-        var ver_old = arr[2];
-        var ver_path_old = arr[3];
-        var ver_new = arr[4];
-        var ver_path_new = arr[5];
-        var o = ver_path_new.indexOf("\\");
-        var o1 = ver_path_old.indexOf("\\");
-        while(o1 !== -1){
-            ver_path_old = ver_path_old.replace("\\","");
-            o1 = ver_path_old.indexOf("\\");
-        }
-        while(o !== -1){
-            ver_path_new = ver_path_new.replace("\\","");
-            o = ver_path_new.indexOf("\\");
+       var fd = new FormData();
+       fd.append('operation_system_id',format(data_log.operation_system_id));
+       var t = format(data_log.time).toString();
+       t = t.substring(0,t.length-8);
+       var arrDate = t.split('T');
+       var date = arrDate[0].split('-');
+       var time = arrDate[1].split(':');
+       time[0] = parseInt(time[0],10) + 7;
+       t = new Date(date[0],parseInt(date[1],10)-1,date[2],time[0],time[1],time[2]);
+       fd.append('time',t.toString().substring(0,t.toString().length-17));
+       fd.append('version_old',format(data_log.version_old));
+       fd.append('version_path_old',format(data_log.version_path_old));
+       fd.append('version_new',format(data_log.version_new));
+       fd.append('version_path_new',format(data_log.version_path_new));
+       fd.append('updated_by',format(data_log.updated_by));
+       fd.append('operation_system_id',format(data_log.operation_system_id));
+        for (var i of fd.entries()) {
+            console.log(i[0] + ' ' + i[1]);
         }
         $.ajaxSetup({
             headers: {
@@ -65,69 +68,78 @@ window.onload = function() {
         });
         jQuery.ajax({
             url: '../download/log/store',
-            type: 'POST',
-            data: {
-                operation_system_id:id,
-                time: time,
-                version_old: ver_old,
-                version_path_old: ver_path_old,
-                version_new: ver_new,
-                version_path_new: ver_path_new
-            },
+            method: 'POST',
+            data: fd,
+            dataType: false,
+            cache: false,
+            processData: false,
+            contentType: false,
             success: function (data) {
 
             }
         })
     }
     //Add new version
-    $('.update_ver').click(function(){
-        // e.preventDefault();
+    $('.update_ver').click(function(e){
+        e.preventDefault();
         var idBtn= $(this).attr('id');
         var arr = idBtn.split('*');
-        var id_os = arr[0];
-        var os_name = arr[1];
-        $('#os_name').text(os_name);
-        $('#add_new').submit(function () {
-            var version = $('#version').val();
-            var path = $('#path').val();
-            var des = $('#des').val();
-            var author = $('#author').val();
-            var is_active = $('#is_active').val();
-            $('#update_version').css('display', 'none');
+        $('#operation_system_id').val(arr[0]);
+        $('#os_name').text(arr[1]);
+        $('#version').val('');
+        $('#version_path').val('');
+        $('#description').val('');
+        $('#box-err').remove();
+        $('#add_new').submit(function (e) {
+            e.preventDefault();
+            var dataObj = new FormData($(this)[0]);
+            var url = '../download/version/store';
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            jQuery.ajax({
-                url: '../download/version/store',
-                type: 'POST',
-                data: {
-                    operation_system_id: id_os,
-                    version: version,
-                    version_path: path,
-                    description: des,
-                    author: author,
-                    is_active: is_active
-                },
-                success: function (data) {
-                    if (data.success) {
-                        var data_log = data.success;
-                        logs(data_log);
+            $.ajax({
+                method: 'POST',
+                url: url,
+                data:dataObj,
+                dataType: false,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    if (res.success) {
+                        var d = JSON.parse(res.success);
+                        logs(d);
                         location.reload();
+                    } else {
+                        alert('Failed');
                     }
                 },
+                error: function (d) {
+                    if( d.status === 422 ) {
+                        var err = d.responseJSON;
+                        errorsHtml = '<div class="alert alert-danger" id="box-err"><ul>';
+                        $.each( err.errors, function( key, value ) {
+                            errorsHtml += '<li>' + value[0] + '</li>';
+                        });
+                        errorsHtml += '</ul></di>';
+                        $( '#form-errors' ).html( errorsHtml );
+                    }
+                }
             })
         })
-
     })
 //change versions for os
-    $("select").change(function () {
+    $("select").change(function (e) {
+        e.preventDefault();
         var ver_up = $(this).children("option:selected").val();
         var idSelect = $(this).attr('id');
         var arr1 = idSelect.split('*');
         var id = arr1[0];
         var ver_now = arr1[1];
+        var user_up = arr1[2];
+        var ver_old_path = $(this).data('status');
         var r = confirm('Are you sure !');
         if (r) {
             $.ajaxSetup({
@@ -137,15 +149,20 @@ window.onload = function() {
             });
             jQuery.ajax({
                 url: '../download/version/update',
-                type: 'GET',
+                method: 'GET',
                 data: {
-                    id_os: id,
+                    operation_system_id: id,
                     version_now: ver_now,
-                    version_update: ver_up
+                    version: ver_up,
+                    created_by:user_up,
+                    version_old_path:ver_old_path
                 },
+                dataType: false,
+                cache: false,
                 success: function (data) {
                     if (data.success) {
-                        logs(data.success);
+                        var d = JSON.parse(data.success);
+                        logs(d);
                         location.reload();
                     }
                 },
@@ -159,7 +176,6 @@ window.onload = function() {
         var arr = idBtn.split('*');
         var id_os = arr[0];
         var os_name = arr[1];
-        e.preventDefault();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -167,27 +183,27 @@ window.onload = function() {
         });
         jQuery.ajax({
             url:'../download/log/index',
-            type:'GET',
+            method:'GET',
             data:{
                 operation_system_id: id_os,
             },
+            dataType: false,
+            cache: false,
             success: function( data ){
                 if(data.success) {
-
-                    var array = data.success.substring(1, data.success.length - 1);
-                    array = array.split('}');
+                    var d = JSON.parse(data.success);
                     var count = document.querySelectorAll('tr.log_ver');
                     if (count.length <1) {
                         $("h4").append('Lịch sử thay đổi '+os_name);
-                        for (var tr = 0; tr < array.length - 1; tr++) {
-                            var arr = formatDataLog(tr, array);
+                        for (var tr = 0; tr < d.length ; tr++) {
                             $('tbody.logs').append(
                                 '<tr role="row" class="odd log_ver">' +
-                                '<td class="text-center">' + arr[0] + '</td>' +
-                                '<td class="text-center">' + arr[1] + '</td>' +
-                                '<td class="text-center">' + arr[2] + '</td>' +
-                                '<td class="text-center">' + arr[3] + '</td>' +
-                                '<td class="text-center">' + arr[4] + '</td>' +
+                                '<td class="text-center">' +  d[tr].time+ '</td>' +
+                                '<td class="text-center">' + d[tr].updated_by + '</td>' +
+                                '<td class="text-center">' + d[tr].version_old + '</td>' +
+                                '<td class="text-center">' + d[tr].version_path_old + '</td>' +
+                                '<td class="text-center">' + d[tr].version_new + '</td>' +
+                                '<td class="text-center">' + d[tr].version_path_new + '</td>' +
                                 '</tr>');
                         }
                     }
@@ -195,46 +211,6 @@ window.onload = function() {
             },
         })
     })
-    //Xử lí dữ liệu lấy từ log
-    function formatDataLog(stt,array) {
-        var arr = null;
-        if (stt === 0) {
-            arr = array[0].split(',');
-            arr = [arr[2], arr[3], arr[4], arr[5], arr[6]];
-            for (var i = 0; i < arr.length; i++) {
-                var sym = arr[i].indexOf(":");
-                arr[i] = arr[i].substring(sym + 1, arr[i].length);
-                arr[i] = arr[i].substring(1, arr[i].length - 1);
-                if(i%2 === 0){
-                    var syms = arr[i].indexOf("\\");
-                    while(syms !== -1){
-                        arr[i] = arr[i].replace("\\","");
-                        syms = arr[i].indexOf("\\");
-                    }
-                }
-            }
-            arr[0] = arr[0].substring(0,arr[0].length-8).concat(' + 07:00');
-
-        }
-        else {
-            arr = array[stt].split(',');
-            arr = [arr[3], arr[4], arr[5], arr[6], arr[7]];
-            for (var j = 0; j < arr.length; j++) {
-                var symb = arr[j].indexOf(":");
-                arr[j] = arr[j].substring(symb + 1, arr[j].length);
-                arr[j] = arr[j].substring(1, arr[j].length - 1);
-                if(j%2 === 0){
-                    var symbs = arr[j].indexOf("\\");
-                    while(symbs !== -1){
-                        arr[j] = arr[j].replace("\\","");
-                        symbs = arr[j].indexOf("\\");
-                    }
-                }
-            }
-            arr[0] = arr[0].substring(0,arr[0].length-8).concat(' + 07:00');
-        }
-        return arr;
-    }
     $('.closeLog').click(function (e) {
         e.preventDefault();
         $('h4').text('');
